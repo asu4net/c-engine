@@ -4,6 +4,6 @@
 
 int main() {
     Log("Hello, World!");
-    
+    Check(0);
     return 0;
 }

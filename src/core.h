@@ -103,14 +103,15 @@ typedef double   F64;
 // @Note: Assert macro implementation.
 
 #ifdef DEBUG
-void _check_function(B8 expr, const char* fmt, ...);
-B8   _ensure_function(B8 expr, const char* fmt, ...);
-#endif
+#define Check(X) _check_function((X), "Check failed: %s\n", #X)
+#define CheckMsg(X, ...) _check_function((X), __VA_ARGS__)
 
-#ifdef DEBUG
-#   define Check(X, ...) (_check_function(X, __VA_ARGS__))
-#   define Ensure(X, ...) (_ensure_function(X, __VA_ARGS__))
+#define Ensure(X) _ensure_function((X), "Ensure failed: %s\n", #X)
+#define EnsureMsg(X, ...) _ensure_function((X), __VA_ARGS__)
 #else
-#   define Check(...)
-#   define Ensure(X, ...) (X)
+#define Check(X) ((void)0)
+#define CheckMsg(...) ((void)0)
+
+#define Ensure(X) (X)
+#define EnsureMsg(X, ...) (X)
 #endif
