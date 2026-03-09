@@ -43,7 +43,6 @@
 				"type": "cppvsdbg",
 				"request": "launch",
 				"console": "integratedTerminal",
-				"preLaunchTask": "build",
 				"program": "${workspaceFolder}/.out/win/debug/game.exe",
 				"cwd": "${workspaceFolder}/assets",
 			}
