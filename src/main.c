@@ -1,6 +1,9 @@
-#include <stdio.h>
+#include "core.h"
+
+#include "core.c"
 
 int main() {
-    printf("Hello, World!\n");
+    Log("Hello, World!");
+    
     return 0;
 }

@@ -3,11 +3,11 @@
 set target=src\main.c
 set out=game.exe
 
-set debug_out=.out\debug
-set release_out=.out\release
+set debug_out=.out\win\debug
+set release_out=.out\win\release
 set includes=-Isrc
 
-set build=clang %target% %includes% -std=c99
+set build=zig cc %target% %includes% -std=c99
 set debug=%build% -o %debug_out%\%out% -g -O0 -DDEBUG
 set release=%build% -o %release_out%\%out% -O2
 

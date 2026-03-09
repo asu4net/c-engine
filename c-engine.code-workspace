@@ -4,5 +4,49 @@
 			"path": "."
 		}
 	],
-	"settings": {}
+	"settings": {
+		"C_Cpp.errorSquiggles": "disabled",
+		"C_Cpp.default.defines": [
+			"DEBUG"
+		],
+		"C_Cpp.default.forcedInclude": [
+			"core.h"
+		]
+	},	
+	"tasks": {
+        "version": "2.0.0",
+        "options": {
+            "cwd": "${workspaceFolder}" 
+        },
+        "presentation": {
+            "reveal": "always",
+            "clear": true
+        },
+		"tasks": [
+			{
+				"label": "build",
+				"type": "shell",
+				"command": "./build-run.bat",
+				"args": ["game", "debug"],
+				"group": {
+					"kind": "build",
+					"isDefault": true
+				}
+			}
+		]
+    },
+	"launch": {
+		"version": "0.2.0",
+		"configurations": [
+			{
+				"name": "game",
+				"type": "cppvsdbg",
+				"request": "launch",
+				"console": "integratedTerminal",
+				"preLaunchTask": "build",
+				"program": "${workspaceFolder}/.out/win/debug/game.exe",
+				"cwd": "${workspaceFolder}/assets",
+			}
+		]
+	}
 }
