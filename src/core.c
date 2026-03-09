@@ -1,5 +1,9 @@
 #include "core.h"
 
+// ==================================
+// @Region: Log and Assert/Check.
+// ==================================
+
 #ifdef DEBUG
     void _log_function(const char* fmt, ...) {
         va_list args;
