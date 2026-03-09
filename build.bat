@@ -1,10 +1,10 @@
 @echo off
 
 set target=src\main.c
-set out=app.exe
+set out=game.exe
 
-set debug_out=out\debug
-set release_out=out\release
+set debug_out=.out\debug
+set release_out=.out\release
 set includes=-Isrc
 
 set build=clang %target% %includes% -std=c99
