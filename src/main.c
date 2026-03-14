@@ -2,8 +2,8 @@
 
 #include "core.c"
 
-int main() {
+S32 main() 
+{
     Log("Hello, World!");
-    Check(0);
     return 0;
 }
