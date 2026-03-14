@@ -116,21 +116,30 @@ void log_(const char* fmt, ...);
 // ==================================
 
 typedef struct Arena Arena;
-
 struct Arena {
     U8* base;
     U64 used;
     U64 size;
 };
 
+typedef struct Temp Temp;
+struct Temp 
+{
+    Arena* arena;
+    U64 pos;
+};
+
 U64 arena_default_size = MB(64);
 
 Arena arena_make(U64 size);
 void* arena_push(Arena* arena, U64 size, U64 align);
-void  arena_reset_keeping_memory(Arena* arena);
-void  arena_reset(Arena* arena);
+void arena_reset_keeping_memory(Arena* arena);
+void arena_reset(Arena* arena);
 
-#define ArenaPush(arena, T) arena_push(arena, sizeof(T), AlignOf(T))
+Temp temp_init(Arena* arena); 
+void temp_done(Temp temp); 
+
+#define ArenaPushStruct(arena, T) arena_push(arena, sizeof(T), AlignOf(T))
 #define ArenaPushArray(arena, T, count) arena_push(arena, sizeof(T) * count, AlignOf(T))
 
 #endif

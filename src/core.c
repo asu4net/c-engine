@@ -92,3 +92,16 @@ void arena_reset(Arena* arena)
     arena->used = 0;
     arena->size = 0;
 }
+
+Temp temp_init(Arena* arena)
+{
+    Temp temp;
+    temp.arena = arena;
+    temp.pos = arena->used;
+    return temp;
+}
+
+void temp_done(Temp temp)
+{
+    temp.arena->used = temp.pos;
+} 
