@@ -118,7 +118,7 @@ struct Temp
     U64 pos;
 };
 
-U64 arena_default_size = MB(64);
+U64 arena_default_size = KB(64);
 
 Arena 
 arena_make(U64 size);
