@@ -1,5 +1,5 @@
-#ifndef INPUT_STATE_H
-#define INPUT_STATE_H
+#ifndef OS_INPUT_STATE_H
+#define OS_INPUT_STATE_H
 
 typedef enum Cursor_Mode Cursor_Mode;
 enum Cursor_Mode
@@ -123,4 +123,4 @@ Key_State   input_key_states[Key_Count]     = {0};
 B32         input_key_down_table[Key_Count] = {0};
 Cursor_Mode input_cursor_mode               = Cursor_Mode_Default;
 
-#endif
+#endif // OS_INPUT_STATE_H

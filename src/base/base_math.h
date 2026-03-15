@@ -1,5 +1,5 @@
-#ifndef ALG_H
-#define ALG_H
+#ifndef BASE_MATH_H
+#define BASE_MATH_H
 
 // ============================
 // @Region: Vec2.
@@ -104,4 +104,4 @@ union Vec4
 #define Color_Yellow           (Vec4) { 1.000, 0.920, 0.016, 1.000 }
 #define Color_Orange           (Vec4) { 0.970, 0.600, 0.110, 1.000 }
 
-#endif
+#endif // BASE_MATH_H

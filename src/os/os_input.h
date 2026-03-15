@@ -1,5 +1,5 @@
-#ifndef INPUT_H
-#define INPUT_H
+#ifndef OS_INPUT_H
+#define OS_INPUT_H
 
 inline static void 
 input_poll_events() 
@@ -30,4 +30,4 @@ input_key_down(Key key)
     return 0;
 }
 
-#endif
+#endif // OS_INPUT_H

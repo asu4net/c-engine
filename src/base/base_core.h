@@ -1,5 +1,5 @@
-#ifndef CORE_H
-#define CORE_H
+#ifndef BASE_CORE_H
+#define BASE_CORE_H
 
 // ============================
 // @Region: Base Types.
@@ -141,4 +141,4 @@ temp_done(Temp temp);
 #define ArenaPushStruct(arena, T) arena_push(arena, sizeof(T), AlignOf(T))
 #define ArenaPushArray(arena, T, count) arena_push(arena, sizeof(T) * count, AlignOf(T))
 
-#endif
+#endif // BASE_CORE_H

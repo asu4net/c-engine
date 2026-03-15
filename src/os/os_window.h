@@ -1,5 +1,5 @@
-#ifndef WINDOW_H
-#define WINDOW_H
+#ifndef OS_WINDOW_H
+#define OS_WINDOW_H
 
 #ifdef _WIN32
 typedef HWND Window_Handle;
@@ -25,4 +25,4 @@ window_destroy(Window_Handle handle)
     #endif
 }
 
-#endif
+#endif // OS_WINDOW_H

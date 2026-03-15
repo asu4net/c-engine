@@ -10,7 +10,7 @@
 			"DEBUG"
 		],
 		"C_Cpp.default.forcedInclude": [
-			"dependencies.h",
+			"common.h",
 		]
 	},	
 	"tasks": {
