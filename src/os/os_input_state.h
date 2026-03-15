@@ -116,6 +116,8 @@ struct Input_Event_View
     S32 count;
 };
 
+// @Note: Input state
+
 U64         input_events_arena_size         = MB(64);
 Arena       input_events_arena              = {0};
 U32         input_events_count              = 0;
