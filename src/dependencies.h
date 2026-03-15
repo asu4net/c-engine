@@ -24,7 +24,6 @@
 // @Region: Header Files
 // ===================================================
 
-
 #include "core.h"
 #include "alg.h"
 
