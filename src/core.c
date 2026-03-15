@@ -24,7 +24,7 @@ void check_(B8 expr, const char* fmt, ...)
         vprintf(fmt, args);
         va_end(args);
         printf("\n");
-        DebugBreak();
+        StopAtThisLine();
     }
 }
 
@@ -37,7 +37,7 @@ B8 ensure_(B8 expr, const char* fmt, ...)
         vprintf(fmt, args);
         va_end(args);
         printf("\n");
-        DebugBreak();
+        StopAtThisLine();
     }
     return expr != 0;
 }

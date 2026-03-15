@@ -90,12 +90,12 @@ void log_(const char* fmt, ...);
 
 #ifdef DEBUG
 #ifdef _WIN32
-#define DebugBreak() __debugbreak()
+#define StopAtThisLine() __debugbreak()
 #else
 #error "Unsupported OS!"
 #endif
 #else
-#define DebugBreak()
+#define StopAtThisLine()
 #endif
 
 #ifdef DEBUG

@@ -7,7 +7,10 @@ set debug_out=.out\win\debug
 set release_out=.out\win\release
 set includes=-Isrc
 
-set build=zig cc %target% %includes% -std=c99
+:: "-lgdi32"  graphics context. 
+:: "-luser32" window and events. 
+
+set build=zig cc %target% %includes% -std=c99 -lopengl32 -lgdi32 -luser32 -lwinmm
 set debug=%build% -o %debug_out%\%out% -g -O0 -DDEBUG
 set release=%build% -o %release_out%\%out% -O2
 
