@@ -1,10 +1,4 @@
-#include "core.h"
-#include "alg.h"
-#include "os.h"
-
-#include "core.c"
-#include "alg.c"
-#include "os.c"
+#include "dependencies.h"
 
 S32 main() 
 {

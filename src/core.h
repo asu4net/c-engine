@@ -2,17 +2,6 @@
 #define CORE_H
 
 // ============================
-// @Region: External includes.
-// ============================
-
-#include <stdio.h>
-#include <stdarg.h>
-#include <math.h>
-#include <string.h>
-#include <stdint.h>
-#include <stdlib.h>
-
-// ============================
 // @Region: Base Types.
 // ============================
 
@@ -92,7 +81,7 @@ void log_(const char* fmt, ...);
 #ifdef _WIN32
 #define StopAtThisLine() __debugbreak()
 #else
-#error "Unsupported OS!"
+#define StopAtThisLine()
 #endif
 #else
 #define StopAtThisLine()
@@ -131,13 +120,23 @@ struct Temp
 
 U64 arena_default_size = MB(64);
 
-Arena arena_make(U64 size);
-void* arena_push(Arena* arena, U64 size, U64 align);
-void arena_reset_keeping_memory(Arena* arena);
-void arena_reset(Arena* arena);
+Arena 
+arena_make(U64 size);
 
-Temp temp_init(Arena* arena); 
-void temp_done(Temp temp); 
+void* 
+arena_push(Arena* arena, U64 size, U64 align);
+
+void 
+arena_reset_keeping_memory(Arena* arena);
+
+void 
+arena_reset(Arena* arena);
+
+Temp 
+temp_init(Arena* arena); 
+
+void 
+temp_done(Temp temp); 
 
 #define ArenaPushStruct(arena, T) arena_push(arena, sizeof(T), AlignOf(T))
 #define ArenaPushArray(arena, T, count) arena_push(arena, sizeof(T) * count, AlignOf(T))

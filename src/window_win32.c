@@ -1,8 +1,4 @@
-#include "os_win32.h"
-
-// ==================================
-// @Region: Window.
-// ==================================
+#include "window_win32.h"
 
 #define WindowClassNameWin32 L"Window Class"
 
