@@ -14,7 +14,7 @@
 
 static HWND main_window_win32 = NULL;  
 
-HWND  window_create_win32(S32 width, S32 height, const char* title, Vec4 bg_color)
+HWND window_create_win32(S32 width, S32 height, const char* title, Vec4 bg_color)
 {
     if (main_window_win32 == NULL)
     {
@@ -133,7 +133,7 @@ HWND  window_create_win32(S32 width, S32 height, const char* title, Vec4 bg_colo
     return hwnd;
 }
 
-void  window_destroy_win32(HWND hwnd)
+void window_destroy_win32(HWND hwnd)
 {
     if (hwnd != NULL)
     {
