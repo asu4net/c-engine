@@ -10,7 +10,10 @@
 			"DEBUG"
 		],
 		"C_Cpp.default.forcedInclude": [
-			"core.h"
+			"core.h",
+			"alg.h",
+			"os.h",
+			"os_win32.h",
 		]
 	},	
 	"tasks": {
