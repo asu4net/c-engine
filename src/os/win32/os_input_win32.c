@@ -192,7 +192,9 @@ CALLBACK LRESULT input_process_events_win32(HWND hWnd, UINT msg, WPARAM wParam, 
             B32 is_repeat = (lParam & (1 << 30)) != 0;
 
             if (!is_repeat)
+            {
                 ev->key_state |= Key_State_Start;
+            }
 
             input_key_down_table[ev->key] = 1;
         }
@@ -229,7 +231,8 @@ CALLBACK LRESULT input_process_events_win32(HWND hWnd, UINT msg, WPARAM wParam, 
         break;
 
         case WM_RBUTTONDOWN:
-        case WM_RBUTTONUP: {
+        case WM_RBUTTONUP: 
+        {
             Input_Event* ev = ArenaPushStruct(&input_events_arena, Input_Event);
             ev->kind = Input_Event_Kind_Key;
             ev->key = Key_Mouse_Right;
@@ -241,7 +244,8 @@ CALLBACK LRESULT input_process_events_win32(HWND hWnd, UINT msg, WPARAM wParam, 
         break;
 
         case WM_MBUTTONDOWN:
-        case WM_MBUTTONUP: {
+        case WM_MBUTTONUP: 
+        {
             Input_Event* ev = ArenaPushStruct(&input_events_arena, Input_Event);
             ev->kind = Input_Event_Kind_Key;
             ev->key = Key_Mouse_Middle;
@@ -252,7 +256,8 @@ CALLBACK LRESULT input_process_events_win32(HWND hWnd, UINT msg, WPARAM wParam, 
         }
         break;
 
-        case WM_MOUSEWHEEL: {
+        case WM_MOUSEWHEEL: 
+        {
             Input_Event* ev = ArenaPushStruct(&input_events_arena, Input_Event);
             ev->kind = Input_Event_Kind_Mouse_Wheel;
             ev->wheel_delta = (S32)GET_WHEEL_DELTA_WPARAM(wParam);
@@ -260,7 +265,8 @@ CALLBACK LRESULT input_process_events_win32(HWND hWnd, UINT msg, WPARAM wParam, 
         break;
 
         case WM_CLOSE:
-        case WM_QUIT: {
+        case WM_QUIT: 
+        {
             Input_Event* ev = ArenaPushStruct(&input_events_arena, Input_Event);
             ev->kind = Input_Event_Kind_Quit;
         }
