@@ -22,10 +22,11 @@ HWND window_create_win32(S32 width, S32 height, const char* title, Vec4 bg_color
         HINSTANCE hInstance = GetModuleHandle(0);
 
         WNDCLASSEXW wc = {};
-        //wc.lpfnWndProc = &Win32_Input::process_events;
+        wc.lpfnWndProc = &input_process_events_win32;
 
         // @Note Use this to run the default event processing.
-        wc.lpfnWndProc = &DefWindowProc;
+        //wc.lpfnWndProc = &DefWindowProc;
+        
         wc.cbSize = sizeof(WNDCLASSEXW);
         wc.hCursor = LoadCursor(NULL, IDC_ARROW);     // Default cursor.
         wc.hIcon = LoadIcon(NULL, IDI_APPLICATION);   // Default icon.

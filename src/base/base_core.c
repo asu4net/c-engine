@@ -50,14 +50,14 @@ Arena arena_make(U64 size)
 {
     Arena arena;
     arena.size = size == 0 ? arena_default_size : size;
-    arena.base = (U8*) calloc(1, arena.size);
+    arena.data = (U8*) calloc(1, arena.size);
     arena.used = 0;
     return arena;
 }
 
 void* arena_push(Arena* arena, U64 size, U64 align)
 {
-    if (arena->base == NULL) 
+    if (arena->data == NULL) 
     {
         *arena = arena_make(0);
     }
@@ -77,7 +77,7 @@ void* arena_push(Arena* arena, U64 size, U64 align)
     }
 
     arena->used = used + size;
-    return arena->base + used;
+    return arena->data + used;
 }
 
 void arena_reset_keeping_memory(Arena* arena)
@@ -87,8 +87,8 @@ void arena_reset_keeping_memory(Arena* arena)
 
 void arena_reset(Arena* arena)
 {
-    free(arena->base);
-    arena->base = NULL;
+    free(arena->data);
+    arena->data = NULL;
     arena->used = 0;
     arena->size = 0;
 }

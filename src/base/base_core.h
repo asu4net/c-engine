@@ -106,7 +106,7 @@ void log_(const char* fmt, ...);
 
 typedef struct Arena 
 {
-    U8* base;
+    U8* data;
     U64 used;
     U64 size;
 } 
