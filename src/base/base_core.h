@@ -104,19 +104,20 @@ void log_(const char* fmt, ...);
 // @Region: Arena
 // ==================================
 
-typedef struct Arena Arena;
-struct Arena {
+typedef struct Arena 
+{
     U8* base;
     U64 used;
     U64 size;
-};
+} 
+Arena;
 
-typedef struct Temp Temp;
-struct Temp 
+typedef struct Temp 
 {
     Arena* arena;
     U64 pos;
-};
+} 
+Temp;
 
 U64 arena_default_size = KB(64);
 

@@ -5,8 +5,7 @@
 // @Region: Vec2.
 // ============================
 
-typedef union Vec2 Vec2;
-union Vec2
+typedef union Vec2
 {
     struct
     {
@@ -15,14 +14,14 @@ union Vec2
     };
 
     F32 v[2];
-};
+} 
+Vec2;
 
 // ============================
 // @Region: Vec3.
 // ============================
 
-typedef union Vec3 Vec3;
-union Vec3
+typedef union Vec3
 {
     struct
     {
@@ -44,14 +43,14 @@ union Vec3
     };
     
     F32 v[3];
-};
+}
+Vec3;
 
 // ============================
 // @Region: Vec4.
 // ============================
 
-typedef union Vec4 Vec4;
-union Vec4
+typedef union Vec4
 {
     struct
     {
@@ -80,7 +79,7 @@ union Vec4
     };
 
     F32 v[4];
-};
+} Vec4;
 
 // ============================
 // @Region: Colors. (Vec4)

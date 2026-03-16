@@ -1,13 +1,13 @@
 #ifndef OS_INPUT_STATE_H
 #define OS_INPUT_STATE_H
 
-typedef enum Cursor_Mode Cursor_Mode;
-enum Cursor_Mode
+typedef enum Cursor_Mode
 {
       Cursor_Mode_Default
     , Cursor_Mode_Confined
     , Cursor_Mode_Hidden
-};
+} 
+Cursor_Mode;
 
 // @Note: Common use case.
 // 
@@ -15,17 +15,16 @@ enum Cursor_Mode
 // Key_State_Repeat   -> Key_State_Down
 // Key_State_Released -> Key_State_End
 
-typedef enum Key_State Key_State;
-enum Key_State
+typedef enum Key_State
 {
       Key_State_None  = 1 << 0
     , Key_State_Down  = 1 << 1
     , Key_State_Start = 1 << 2 
     , Key_State_End   = 1 << 3
-};
+} 
+Key_State;
 
-typedef enum Key Key;
-enum Key
+typedef enum Key
 {
       Key_Unknown = 0
     
@@ -77,10 +76,10 @@ enum Key
 
     // *** End ***
     , Key_Count
-};
+} 
+Key;
 
-typedef enum Input_Event_Kind Input_Event_Kind;
-enum Input_Event_Kind 
+typedef enum Input_Event_Kind 
 {
       Input_Event_Kind_None
     , Input_Event_Kind_Key
@@ -88,10 +87,10 @@ enum Input_Event_Kind
     , Input_Event_Kind_Mouse_Move
     , Input_Event_Kind_Mouse_Wheel
     , Input_Event_Kind_Quit
-};
+} 
+Input_Event_Kind;
 
-typedef struct Input_Event Input_Event;
-struct Input_Event
+typedef struct Input_Event
 {
     Input_Event_Kind kind;
 
@@ -107,14 +106,15 @@ struct Input_Event
 
     S32 mouse_delta_x;
     S32 mouse_delta_y;
-};
+} 
+Input_Event;
 
-typedef struct Input_Event_View Input_Event_View;
-struct Input_Event_View
+typedef struct Input_Event_View
 {
     Input_Event* data;
     S32 count;
-};
+} 
+Input_Event_View;
 
 // @Note: Input state
 
