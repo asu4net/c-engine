@@ -139,7 +139,7 @@ temp_init(Arena* arena);
 void 
 temp_done(Temp temp); 
 
-#define ArenaPushStruct(arena, T) arena_push(arena, sizeof(T), AlignOf(T))
-#define ArenaPushArray(arena, T, count) arena_push(arena, sizeof(T) * count, AlignOf(T))
+#define ArenaPushStruct(arena, T) (T*) arena_push(arena, sizeof(T), AlignOf(T))
+#define ArenaPushArray(arena, T, count) (T*) arena_push(arena, sizeof(T) * count, AlignOf(T))
 
 #endif // BASE_CORE_H

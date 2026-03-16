@@ -120,7 +120,7 @@ Input_Event_View;
 
 U64         input_events_arena_size         = KB(64);
 Arena       input_events_arena              = {};
-U32         input_events_count              = 0;
+S32         input_events_count              = 0;
 Key_State   input_key_states[Key_Count]     = {};
 B32         input_key_down_table[Key_Count] = {};
 Cursor_Mode input_cursor_mode               = Cursor_Mode_Default;
