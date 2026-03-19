@@ -8,11 +8,13 @@
 
 #define WindowStyleDefaultWin32 WindowStyleWindowedWin32
 
-static HWND main_window_win32 = NULL;  
+static B32 window_class_registered_win32 = 0;
+static B32 input_device_registered_win32 = 0;
+static HWND main_window_win32 = NULL;
 
 HWND window_create_win32(S32 width, S32 height, const char* title, Vec4 bg_color)
 {
-    if (main_window_win32 == NULL)
+    if (window_class_registered_win32 == 0)
     {
         SetProcessDPIAware(); // @Note(SetProcessDPIAware)
         timeBeginPeriod(1);   // @Note(timeBeginPeriod)
@@ -35,8 +37,9 @@ HWND window_create_win32(S32 width, S32 height, const char* title, Vec4 bg_color
         wc.lpszClassName = WindowClassNameWin32;
         // @Note: CreateSolidBrush changes the background color, I guess.
         wc.hbrBackground = CreateSolidBrush(RGB(bg_color.x * 255, bg_color.y * 255, bg_color.z * 255));
+        window_class_registered_win32 = RegisterClassExW(&wc) != 0;
 
-        if (!EnsureMsg(RegisterClassExW(&wc) != 0, "Error! Couldn't register the Win32 window class."))
+        if (!EnsureMsg(window_class_registered_win32 != 0, "Error! Couldn't register the Win32 window class."))
         {
             return NULL;
         }
@@ -103,15 +106,17 @@ HWND window_create_win32(S32 width, S32 height, const char* title, Vec4 bg_color
         NULL                        // Additional application data.
     );
 
-    if (EnsureMsg(hwnd != 0, "Error! Couldn't create the Win32 window."))
+    if (!EnsureMsg(hwnd != 0, "Error! Couldn't create the Win32 window."))
     {
-        UpdateWindow(hwnd);
-        ShowWindow(hwnd, SW_SHOW);
+        return NULL;
     }
+
+    UpdateWindow(hwnd);
+    ShowWindow(hwnd, SW_SHOW);
 
     Log("Win32 Window created!");
 
-    if (main_window_win32 == NULL)
+    if (input_device_registered_win32 == 0)
     {
         // @Note: Register the input device.
         RAWINPUTDEVICE rid;
@@ -119,14 +124,10 @@ HWND window_create_win32(S32 width, S32 height, const char* title, Vec4 bg_color
         rid.usUsage = 0x02;     // Mouse
         rid.dwFlags = RIDEV_INPUTSINK;
         rid.hwndTarget = hwnd;
-        RegisterRawInputDevices(&rid, 1, sizeof(rid));
+        input_device_registered_win32 = RegisterRawInputDevices(&rid, 1, sizeof(rid));
     }
     
-    if (hwnd) 
-    {
-        SetForegroundWindow(hwnd);
-    }
-
+    SetForegroundWindow(hwnd);
     return hwnd;
 }
 
@@ -134,19 +135,24 @@ void window_destroy_win32(HWND hwnd)
 {
     if (hwnd != NULL)
     {
-        if (hwnd == main_window_win32)
-        {
-            // @Note: Unregister the input device.
-            RAWINPUTDEVICE rid;
-            rid.usUsagePage = 0x01; // Generic Desktop
-            rid.usUsage = 0x02;     // Mouse
-            rid.dwFlags = RIDEV_REMOVE;
-            rid.hwndTarget = hwnd;
-            RegisterRawInputDevices(&rid, 1, sizeof(rid));
-        }
-
         DestroyWindow(hwnd);
         Log("Win32 Window destroyed!");
+
+        if (hwnd == main_window_win32)
+        {
+            if (input_device_registered_win32)
+            {
+                RAWINPUTDEVICE rid;
+                rid.usUsagePage = 0x01; // Generic Desktop
+                rid.usUsage = 0x02;     // Mouse
+                rid.dwFlags = RIDEV_REMOVE;
+                rid.hwndTarget = hwnd;
+                RegisterRawInputDevices(&rid, 1, sizeof(rid));
+                input_device_registered_win32 = 0;
+            }
+            // @Pending: Free the window class and set window_class_registered_win32 to false.
+            main_window_win32 = NULL;
+        }
     }
 }
 
