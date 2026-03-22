@@ -1,6 +1,5 @@
-
-#ifndef BASE_H
-#define BASE_H
+#ifndef ENGINE_CORE_H
+#define ENGINE_CORE_H
 
 // ===================================================
 // @Region: Platform detection
@@ -35,10 +34,12 @@
 #include <stdlib.h>
 
 // ===================================================
-// @Region: Base
+// @Region: Core
 // ===================================================
 
-#include "base/base_core.h"
-#include "base/base_math.h"
+#include "engine/core/basic.h"
+#include "engine/core/debug.h"
+#include "engine/core/math.h"
+#include "engine/core/arena.h"
 
-#endif // BASE_H
+#endif // ENGINE_CORE_H.

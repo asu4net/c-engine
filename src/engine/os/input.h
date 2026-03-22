@@ -1,5 +1,5 @@
-#ifndef OS_INPUT_H
-#define OS_INPUT_H
+#ifndef ENGINE_OS_INPUT_H
+#define ENGINE_OS_INPUT_H
 
 inline static void 
 input_poll_events() 
@@ -33,4 +33,4 @@ input_key_down(Key key)
     return input_key_down_table[key];
 }
 
-#endif // OS_INPUT_H
+#endif // ENGINE_OS_INPUT_H.

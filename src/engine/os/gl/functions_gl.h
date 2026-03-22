@@ -1,4 +1,5 @@
-#pragma once
+#ifndef ENGINE_OS_FUNCTIONS_GL_H
+#define ENGINE_OS_FUNCTIONS_GL_H
 
 #define ForOpenGLFunctions(_do) \
     _do(PFNGLDEBUGMESSAGECALLBACKPROC,      glDebugMessageCallback)      \
@@ -46,3 +47,5 @@
     _do(PFNGLDRAWBUFFERSPROC,               glDrawBuffers)               \
     _do(PFNGLCLEARTEXIMAGEPROC,             glClearTexImage)             \
     _do(PFNGLCLEARBUFFERFVPROC,             glClearBufferfv)             \
+
+#endif // ENGINE_OS_FUNCTIONS_GL_H.
