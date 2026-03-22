@@ -4,7 +4,7 @@
 // @Region: Log and Assert/Check.
 // ==================================
 
-#ifdef DEBUG
+#ifdef ENGINE_CONFIG_DEBUG
     void log_(const char* fmt, ...) 
     {
         va_list args;

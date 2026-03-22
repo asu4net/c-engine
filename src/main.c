@@ -19,7 +19,7 @@ S32 main()
             {
                 quit = 1;
             }
-            #ifdef DEBUG
+            #ifdef ENGINE_CONFIG_DEBUG
             if (event->key == Key_Escape)
             {
                 quit = 1;

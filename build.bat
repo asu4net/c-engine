@@ -10,8 +10,8 @@ set includes=-Isrc
 :: "-lgdi32"  graphics context. 
 :: "-luser32" window and events. 
 
-set build=zig cc %target% %includes% -std=c99 -lopengl32 -lgdi32 -luser32 -lwinmm
-set debug=%build% -o %debug_out%\%out% -g -O0 -DDEBUG
+set build=zig cc %target% %includes% -std=c99 -lopengl32 -lgdi32 -luser32 -lwinmm -DENGINE_API_GL
+set debug=%build% -o %debug_out%\%out% -g -O0 -DENGINE_CONFIG_DEBUG
 set release=%build% -o %release_out%\%out% -O2
 
 :: "-g"        generates debug info.

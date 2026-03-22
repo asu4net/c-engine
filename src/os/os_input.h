@@ -4,7 +4,7 @@
 inline static void 
 input_poll_events() 
 {
-    #ifdef _WIN32
+    #ifdef ENGINE_OS_WINDOWS
     input_poll_events_win32();
     #endif
 }
@@ -12,7 +12,7 @@ input_poll_events()
 inline static void 
 input_set_cursor_mode(Cursor_Mode mode) 
 {
-    #ifdef _WIN32
+    #ifdef ENGINE_OS_WINDOWS
     input_set_cursor_mode(mode);
     #endif
 }
